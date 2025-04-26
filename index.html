@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital-Care | Life Saving Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="heart-beat">
+                <div class="heart"></div>
+                <div class="pulse"></div>
+            </div>
+            <p>Loading Vital-Care...</p>
+        </div>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat" style="color: rgb(56, 5, 5);"></i>
+                <span style="color: rgb(56, 5, 5);">Vital-Care</span>
+            </a>
+            
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="blood-donation.html">Blood Donation</a></li>
+                    <li><a href="request-blood.html">Request Blood</a></li>
+                    <li><a href="orgain-donation.html">Organ Donation</a></li>
+                    <li><a href="orgain-request.html">Request Organ</a></li>
+                    <li><a href="#telemedicine">Video Doctor</a></li>
+                    <li><a href="medical-shop.html">Medicine Shop</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="login-page.html" class="btn btn-login">Login</a>
+                <a href="regitration.html" class="btn btn-register">Register</a>
+            </div>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay">
+            <video autoplay muted loop>
+                <source src="video/home-page.mp4" type="video/mp4">
+                <!-- Add additional source elements for other formats if needed -->
+            </video>
+            <!-- Your other content here -->
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate-pop-in" style="color: black;">Connecting Donors With Those In Need</h1>
+                <p class="hero-subtitle animate-pop-in">Join our life-saving community to donate blood, organs, consult doctors, and access medicines</p>
+                <div class="hero-buttons animate-pop-in">
+                    <a href="blood-donation.html" class="btn btn-primary">Donate Blood</a>
+                    <a href="orgain-donation.html" class="btn btn-secondary">Register as Organ Donor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blood Donation Section -->
+    <section id="blood" class="section blood-donation">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Blood Donation</h2>
+                <p class="section-subtitle">Your blood can save up to 3 lives. Donate today!</p>
+            </div>
+            
+            <div class="blood-content">
+                <div class="blood-image animate-slide-left">
+                    <img src="images/Blood_Donation.jpg" alt="Blood Donation">
+                    <div class="blood-type-bubbles">
+                        <span class="bubble a-plus">A+</span>
+                        <span class="bubble b-plus">B+</span>
+                        <span class="bubble o-plus">O+</span>
+                        <span class="bubble ab-plus">AB+</span>
+                        <span class="bubble a-neg">A-</span>
+                        <span class="bubble b-neg">B-</span>
+                        <span class="bubble o-neg">O-</span>
+                        <span class="bubble ab-neg">AB-</span>
+                    </div>
+                </div>
+                
+                <div class="blood-info animate-slide-right">
+                    <div class="blood-actions">
+                        <a href="blood-donation.html" class="btn btn-donate">Donate Blood</a>
+                        <a href="request-blood.html" class="btn btn-request">Request Blood</a>
+                    </div>
+                    
+                    <div class="blood-facts">
+                        <div class="fact-item">
+                            <i class="fas fa-tint"></i>
+                            <h4>Every 2 Seconds</h4>
+                            <p>Someone in the world needs blood</p>
+                        </div>
+                        <div class="fact-item">
+                            <i class="fas fa-clock"></i>
+                            <h4>Only 1 Hour</h4>
+                            <p>The time it takes to donate blood</p>
+                        </div>
+                        <div class="fact-item">
+                            <i class="fas fa-user-plus"></i>
+                            <h4>1 Donation</h4>
+                            <p>Can save up to 3 lives</p>
+                        </div>
+                    </div>
+                    
+                    <div class="blood-search">
+                        <h3>Find Blood Banks Near You</h3>
+                        <div class="search-box">
+                            <input type="text" placeholder="Enter your location">
+                            <button class="btn btn-search">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organ Donation Section -->
+    <section id="organ" class="section organ-donation">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Organ Donation</h2>
+                <p class="section-subtitle">Give the gift of life. Register as an organ donor today.</p>
+            </div>
+            
+            <div class="organ-content">
+                <div class="organ-info animate-slide-left">
+                    <div class="organ-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Register</h4>
+                                <p>Sign up as an organ donor in our system</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Inform Family</h4>
+                                <p>Let your family know about your decision</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Save Lives</h4>
+                                <p>Your organs can save up to 8 lives after death</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="organ-register">
+                        <a href="orgain-donation.html" class="btn btn-organ-register">Register as Donor</a>
+                        <a href="orgain-request.html" class="btn btn-organ-request">Request Organ</a>
+                    </div>
+                </div>
+                
+                <div class="organ-image animate-slide-right">
+                    <img src="images/organ_donate.png" alt="Organ Donation">
+                    <div class="organ-types">
+                        <!-- <div class="organ-item heart">
+                            <i class="fas fa-heart"></i>
+                            <span>Heart</span>
+                        </div> -->
+                        <div class="organ-item kidney">
+                            <i class="fas fa-filter"></i>
+                            <span>Kidney</span>
+                        </div>
+                        <div class="organ-item liver">
+                            <i class="fas fa-leaf"></i>
+                            <span>Liver</span>
+                        </div>
+                        <div class="organ-item lung">
+                            <i class="fas fa-wind"></i>
+                            <span>Lung</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Telemedicine Section -->
+    <section id="telemedicine" class="section telemedicine">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Video Consultation</h2>
+                <p class="section-subtitle">Consult with top doctors from the comfort of your home</p>
+            </div>
+            
+            <div class="telemedicine-content">
+                <div class="telemedicine-image animate-slide-left">
+                    <img src="images/Video Consultation.jpg" alt="Video Consultation">
+                    <div class="video-call-animation">
+                        <div class="doctor-video"></div>
+                        <div class="patient-video"></div>
+                        <div class="call-controls">
+                            <button class="call-btn"><i class="fas fa-video"></i></button>
+                            <button class="call-btn"><i class="fas fa-microphone"></i></button>
+                            <button class="call-btn end-call"><i class="fas fa-phone-slash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="telemedicine-info animate-slide-right">
+                    <div class="doctor-categories">
+                        <h3>Specialties Available</h3>
+                        <div class="categories-grid">
+                            <div class="category-card">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Cardiology</span>
+                            </div>
+                            <div class="category-card">
+                                <i class="fas fa-brain"></i>
+                                <span>Neurology</span>
+                            </div>
+                            <div class="category-card">
+                                <i class="fas fa-bone"></i>
+                                <span>Orthopedics</span>
+                            </div>
+                            <div class="category-card">
+                                <i class="fas fa-baby"></i>
+                                <span>Pediatrics</span>
+                            </div>
+                            <div class="category-card">
+                                <i class="fas fa-allergies"></i>
+                                <span>Allergy</span>
+                            </div>
+                            <div class="category-card">
+                                <i class="fas fa-eye"></i>
+                                <span>Ophthalmology</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="consultation-actions">
+                        <a href="#" class="btn btn-book-now">Book Appointment Now</a>
+                        <a href="#" class="btn btn-view-doctors">View All Doctors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pharmacy Section -->
+    <section id="pharmacy" class="section pharmacy">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Medicine Shop</h2>
+                <p class="section-subtitle">Get your medicines delivered to your doorstep</p>
+            </div>
+            
+            <div class="pharmacy-content">
+                <div class="pharmacy-search animate-slide-up">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for medicines...">
+                        <button class="btn btn-search"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="categories">
+                        <span class="category active"><a href="medical-shop.html">All</a></span>
+                        <span class="category"><a href="medical-shop.html">Prescription</a></span>
+                        <span class="category"><a href="medical-shop.html">OTC</a></span>
+                        <span class="category"><a href="medical-shop.html">Wellness</a></span>
+                        <span class="category"><a href="medical-shop.html">Ayurvedic</a></span>
+                        <span class="category"><a href="medical-shop.html">Homeopathy</a></span>
+                    </div>
+                </div>
+                
+                <div class="medicine-carousel animate-slide-up">
+                    <div class="medicine-card">
+                        <img src="images/paracetamol-500mg.jpg" alt="Medicine">
+                        <h4>Paracetamol 500mg</h4>
+                        <p class="price">$5.99</p>
+                        <button class="btn btn-add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="medicine-card">
+                        <img src="images/vitamin-c-1000-mg.webp" alt="Medicine">
+                        <h4>Vitamin C 1000mg</h4>
+                        <p class="price">$12.99</p>
+                        <button class="btn btn-add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="medicine-card">
+                        <img src="images/41efuUp7w0L.webp" alt="Medicine">
+                        <h4>Omeprazole 20mg</h4>
+                        <p class="price">$8.49</p>
+                        <button class="btn btn-add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="medicine-card">
+                        <img src="images/cetirizine-10mg-tablets.webp" alt="Medicine">
+                        <h4>Cetirizine 10mg</h4>
+                        <p class="price">$6.99</p>
+                        <button class="btn btn-add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="pharmacy-features animate-fade-in">
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Authentic Medicines</h4>
+                        <p>100% genuine medicines from licensed pharmacies</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-truck"></i>
+                        <h4>Fast Delivery</h4>
+                        <p>Get medicines delivered in as little as 2 hours</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-prescription"></i>
+                        <h4>Upload Prescription</h4>
+                        <p>Upload your prescription and we'll handle the rest</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Vital-Care</h2>
+                <p class="section-subtitle">Our mission to save and improve lives</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image animate-slide-left">
+                    <img src="images/Vitel-care.jpg" alt="About Vital-Care">
+                    <div class="stats-overlay">
+                        <div class="stat">
+                            <h3>5+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Hospitals Partnered</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-info animate-slide-right">
+                    <h3>Who We Are</h3>
+                    <p>Vital-Care is a revolutionary healthcare platform connecting donors, patients, doctors, and pharmacies in one ecosystem. Founded in 2018, we've been at the forefront of digital healthcare innovation.</p>
+                    
+                    <div class="mission-vision">
+                        <div class="mv-item">
+                            <i class="fas fa-bullseye"></i>
+                            <h4>Our Mission</h4>
+                            <p>To bridge the gap between healthcare providers and those in need through technology.</p>
+                        </div>
+                        <div class="mv-item">
+                            <i class="fas fa-eye"></i>
+                            <h4>Our Vision</h4>
+                            <p>A world where no one dies waiting for blood, organs, or medical care.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-highlight">
+                        <h4>Meet Our Team</h4>
+                        <div class="team-members">
+                            <div class="member">
+                                <img src="images/stock-photo-handsome-young-doctor-isolated-on-white-background-192190367.jpg" alt="Doctor">
+                                <p>Dr. Sarah Johnson</p>
+                            </div>
+                            <div class="member">
+                                <img src="images/stock-photo-portrait-of-a-friendly-doctor-isolated-on-white-1494782192.jpg" alt="Doctor">
+                                <p>Dr. Michael Chen</p>
+                            </div>
+                            <div class="member">
+                                <img src="images/stock-photo-close-up-of-a-lady-doctor-with-folding-arms-2453086223.jpg" alt="Doctor">
+                                <p>Dr. Priya Patel</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">We'd love to hear from you</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info animate-slide-left">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Healthcare Ave, Medical District, Chandigarh</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 6294433163</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>souvickd720@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Monday - Friday: 8AM - 8PM<br>Saturday: 9AM - 5PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form animate-slide-right">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="logo">
+                        <img src="images/Logo.jpg" alt="Vital-Care Logo">
+                        <span>Vital-Care</span>
+                    </div>
+                    <p>Connecting donors, patients, and healthcare providers to save lives through technology.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#blood">Blood Donation</a></li>
+                        <li><a href="#organ">Organ Donation</a></li>
+                        <li><a href="#telemedicine">Video Doctor</a></li>
+                        <li><a href="#pharmacy">Medicine Shop</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Find Blood Donors</a></li>
+                        <li><a href="#">Organ Donor Registry</a></li>
+                        <li><a href="#">Online Doctor Consultation</a></li>
+                        <li><a href="#">Medicine Delivery</a></li>
+                        <li><a href="#">Health Checkups</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for health tips and updates.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your Email">
+                        <button class="btn btn-subscribe"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vital-Care. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

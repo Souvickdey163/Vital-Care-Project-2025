@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeShare - Organ Donation Registry</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern Color Scheme */
+        :root {
+            --teal: #2b9a8e;
+            --teal-dark: #1e7d74;
+            --purple: #6a4c93;
+            --cream: #f8f4e3;
+            --gray: #333333;
+            --light-gray: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--teal);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--purple);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background-color: var(--teal);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 8px rgba(43, 154, 142, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: var(--teal-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(43, 154, 142, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--teal);
+            color: var(--teal);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--teal);
+            color: white;
+        }
+
+        /* Glass Morphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 40px;
+            transition: all 0.5s ease;
+        }
+
+        /* Header/Navbar */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--teal);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--purple);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(46, 45, 45, 0.7), rgba(50, 47, 47, 0.7));
+            background-size: cover;
+            background-position: center;
+            height: 130vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: -100px;
+        }
+        .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Ensure video doesn't overflow */
+}
+
+.hero-overlay video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Place behind other content */
+    object-fit: cover; /* Similar to background-size: cover */
+}
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 3.2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero .btn {
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+            background-color: white;
+            color: var(--teal);
+        }
+
+        .hero .btn:hover {
+            background-color: var(--light-gray);
+            color: var(--teal-dark);
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: white;
+            padding: 60px 0;
+            position: relative;
+            z-index: 2;
+            margin-top: -50px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            transform: translateY(50px);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--purple);
+            font-weight: 600;
+        }
+
+        /* Registration Section */
+        .registration {
+            background-color: var(--light-gray);
+            position: relative;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .form-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--teal);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--teal);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(43, 154, 142, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input {
+            margin-right: 10px;
+            width: auto;
+        }
+
+        /* Organs Section */
+        .organs {
+            text-align: center;
+            background-color: white;
+        }
+
+        .organ-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .organ-card {
+            background-color: var(--light-gray);
+            border-radius: 15px;
+            padding: 30px;
+            width: 250px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .organ-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .organ-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .organ-icon {
+            font-size: 3.5rem;
+            color: var(--purple);
+            margin-bottom: 20px;
+        }
+
+        .organ-card h3 {
+            color: var(--teal);
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--purple);
+            color: white;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            color: white;
+        }
+
+        .testimonials h2:after {
+            background-color: var(--teal);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 50px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial {
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin: 0 20px;
+            transition: all 0.5s ease;
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Location Section */
+        .locations {
+            text-align: center;
+        }
+
+        .map-container {
+            height: 500px;
+            margin-top: 50px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border: 10px solid white;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: var(--light-gray);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            background-color: white;
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: var(--teal);
+            color: white;
+        }
+
+        .faq-answer {
+            background-color: white;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 300px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--gray);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--teal);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--teal);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-item {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                height: auto;
+                padding: 120px 0;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html">
+                    <i class="fas fa-heartbeat"></i>
+                </a>
+                    <span>Vital-Care</span>
+                </div>
+                <ul class="nav-links">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="blood-donation.html">Blood Donation</a></li>
+                        <li><a href="request-blood.html">Request Blood</a></li>
+                        <li><a href="orgain-donation.html">Organ Donation</a></li>
+                        <li><a href="orgain-request.html">Request Organ</a></li>
+                        <li><a href="#telemedicine">Video Doctor</a></li>
+                        <li><a href="medical-shop.html">Medicine Shop</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay">
+            <video autoplay muted loop>
+                <source src="video/orgain1111.mp4" type="video/mp4">
+                <!-- Add additional source elements for other formats if needed -->
+            </video>
+            <!-- Your other content here -->
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Give the Gift of Life Through Organ Donation</h1>
+                <p>Register today to become an organ donor and save up to 8 lives. Your decision could give someone a second chance at life.</p>
+                <a href="#register" class="btn">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">120,000+</div>
+                    <div class="stat-label">Waiting in US</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Lives Saved</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">48,000</div>
+                    <div class="stat-label">Annual Transplants</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">22</div>
+                    <div class="stat-label">Daily Deaths Waiting</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="registration">
+        <div class="container">
+            <h2>Become an Organ Donor</h2>
+            <p>Fill out this form to register as an organ donor. Your information will be kept confidential and only used for donation purposes.</p>
+            
+            <div class="glass-card form-container" id="donorForm">
+                <form id="organDonationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Street Address</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State/Province</label>
+                            <input type="text" id="state" name="state" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">ZIP/Postal Code</label>
+                            <input type="text" id="zip" name="zip" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="organs">Organs/Tissues You Wish to Donate</label>
+                        <select id="organs" name="organs" multiple size="5">
+                            <option value="heart">Heart</option>
+                            <option value="lungs">Lungs</option>
+                            <option value="liver">Liver</option>
+                            <option value="kidneys">Kidneys</option>
+                            <option value="pancreas">Pancreas</option>
+                            <option value="intestines">Intestines</option>
+                            <option value="corneas">Corneas</option>
+                            <option value="skin">Skin</option>
+                            <option value="bone">Bone</option>
+                            <option value="tendons">Tendons</option>
+                        </select>
+                        <small>Hold Ctrl/Cmd to select multiple</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="healthInfo">Relevant Health Information</label>
+                        <textarea id="healthInfo" name="healthInfo" rows="4" placeholder="Any medical conditions, allergies, or other health information we should know about"></textarea>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="legalConsent" name="legalConsent" required>
+                        <label for="legalConsent">I understand that this is a legal document and I voluntarily consent to donate my organs and tissues upon my death.</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="familyConsent" name="familyConsent">
+                        <label for="familyConsent">I have discussed this decision with my family members.</label>
+                    </div>
+                    
+                    <button type="submit" class="btn">Complete Registration</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organs Section -->
+    <section id="organs" class="organs">
+        <div class="container">
+            <h2>Organs & Tissues You Can Donate</h2>
+            <p>One donor can save multiple lives through the gift of organ and tissue donation</p>
+            
+            <div class="organ-cards">
+                <div class="organ-card fade-in">
+                    <div class="organ-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Heart</h3>
+                    <p>Can save someone with end-stage heart failure</p>
+                </div>
+                
+                <div class="organ-card fade-in">
+                    <div class="organ-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <h3>Lungs</h3>
+                    <p>Can be transplanted as a pair or singly</p>
+                </div>
+                
+                <div class="organ-card fade-in">
+                    <div class="organ-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Liver</h3>
+                    <p>Can be split to help two recipients</p>
+                </div>
+                
+                <div class="organ-card fade-in">
+                    <div class="organ-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3>Kidneys</h3>
+                    <p>Most commonly transplanted organ</p>
+                </div>
+                
+                <div class="organ-card fade-in">
+                    <div class="organ-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Corneas</h3>
+                    <p>Can restore sight to the blind</p>
+                </div>
+                
+                <div class="organ-card fade-in">
+                    <div class="organ-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3>Tissues</h3>
+                    <p>Skin, bone, tendons help many patients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Stories of Hope</h2>
+            <p>Hear from recipients and donor families about the impact of organ donation</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "My daughter's decision to be an organ donor gave meaning to our tragedy. Knowing her heart beats in someone else gives us comfort."
+                    </div>
+                    <div class="testimonial-author">- Sarah J., Donor Mother</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="locations" class="locations">
+        <div class="container">
+            <h2>Donation Centers Near You</h2>
+            <p>Find organ procurement organizations and transplant centers in your area</p>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215573291234!2d-73.98784492423922!3d40.74844097138966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p>Get answers to common questions about organ donation</p>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Who can become an organ donor?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Almost anyone can be a potential donor regardless of age, race, or medical history. At the time of death, medical professionals will determine which organs and tissues are suitable for donation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Does registering as a donor affect my medical care?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No. Medical professionals always prioritize saving your life. Organ donation is only considered after all life-saving efforts have failed and death has been declared.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are there costs to my family for donation?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No. The donor's family is never charged for donation. All costs related to donation are covered by the transplant recipient's insurance or the transplant center.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I change my mind after registering?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can update or revoke your donor registration at any time through your state's donor registry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Vital-Care</h3>
+                    <p>Dedicated to increasing organ donation registration and saving lives through education and awareness.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#register">Register</a></li>
+                        <li><a href="#organs">Organs</a></li>
+                        <li><a href="#testimonials">Stories</a></li>
+                        <li><a href="#locations">Locations</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Chandigarh, India</li>
+                        <li><i class="fas fa-phone"></i> 6294433163</li>
+                        <li><i class="fas fa-envelope"></i> souvickd720@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Vital-Care Organ Donation Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission
+        document.getElementById('organDonationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Form validation
+            const form = e.target;
+            const formData = new FormData(form);
+            const formValues = Object.fromEntries(formData.entries());
+            
+            if (!formValues.legalConsent) {
+                alert('You must consent to organ donation to complete registration.');
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            console.log('Organ donor registration submitted:', formValues);
+            
+            // Show success message
+            alert('Thank you for registering as an organ donor! You will receive a confirmation email with next steps.');
+            form.reset();
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.classList.contains('active');
+                
+                // Close all answers
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current answer if not already open
+                if (!isOpen) {
+                    answer.classList.add('active');
+                }
+                
+                // Rotate chevron icon
+                const icon = question.querySelector('i');
+                document.querySelectorAll('.faq-question i').forEach(i => {
+                    i.style.transform = 'rotate(0deg)';
+                });
+                if (!isOpen) {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make form container visible
+            document.querySelector('.form-container').classList.add('visible');
+            
+            // Intersection Observer for animations
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Add staggered delay for organ cards
+                        if (entry.target.classList.contains('organ-card')) {
+                            entry.target.style.transitionDelay = `${index * 0.1}s`;
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Simple testimonial slider
+        let currentTestimonial = 0;
+        const testimonials = [
+            {
+                content: "My daughter's decision to be an organ donor gave meaning to our tragedy. Knowing her heart beats in someone else gives us comfort.",
+                author: "Sarah J., Donor Mother"
+            },
+            {
+                content: "After 5 years on dialysis, my kidney transplant gave me my life back. I'm forever grateful to my donor and their family.",
+                author: "Michael T., Kidney Recipient"
+            },
+            {
+                content: "Registering as a donor was one of the easiest and most meaningful decisions I've ever made. It takes just minutes but can save lives.",
+                author: "David R., Registered Donor"
+            }
+        ];
+
+        function changeTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            const testimonial = testimonials[currentTestimonial];
+            const testimonialElement = document.querySelector('.testimonial');
+            
+            testimonialElement.style.opacity = 0;
+            
+            setTimeout(() => {
+                testimonialElement.innerHTML = `
+                    <div class="testimonial-content">"${testimonial.content}"</div>
+                    <div class="testimonial-author">- ${testimonial.author}</div>
+                `;
+                testimonialElement.style.opacity = 1;
+            }, 500);
+        }
+
+        // Change testimonial every 5 seconds
+        setInterval(changeTestimonial, 5000);
+    </script>
+</body>
+</html>
